@@ -5,7 +5,9 @@ function Task(props){
     const elem = props.data.map((item) => {
         let{id,task} = item;
         return (
-            <AddTask key = {id} task = {task}/>
+            <AddTask key = {id}
+                     task = {task}
+                     delite ={() => props.delite(id)}/>
         )
     })
     return (

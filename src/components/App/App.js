@@ -9,16 +9,19 @@ class App extends Component{
         super(props);
         this.state = {
             data : [
-                {task:'Учить React', id: 1},
+                {task:'Учить React', id: 0},
             ],
         }
+        this.maxId = 1;
     }
+
     deleteItem =(id)=>{
         this.setState(({data})=> {
             return {
               data: data.filter(item => item.id !== id)
             }
         })
+        
     }
 
     addItem = (task) => {
@@ -53,8 +56,8 @@ class App extends Component{
                 </header>
                   
                 <section className="App_wrapper">
-                    <TaskAddForm onAdd={this.addItem}/>
-                    <Task data = {data}/>
+                    <TaskAddForm onAdd={this.addItem} />
+                    <Task data = {data} delite={this.deleteItem}/>
                     <ClearButton length = {totalNumTask}/>
                 </section> 
 
