@@ -1,4 +1,5 @@
 .task
+    padding-top: 3px
     height: 50px
     position: relative
     display: flex
@@ -19,19 +20,34 @@
         left: 13px
         top: 20px
     &_button
-        margin-left: 10px
+        
+        margin-left: 5px
         border-radius: 20px
-        width: 100px
-        height: 50px
+        width: 70px
+        height: 49px
         background: #eae5ee
         border: none
         cursor: pointer
     &:hover
         .task_button
-            transition: 0.8s
+            animation: ani 0.8s
+        .delite
             background: rgba(23,23,145,1)
             background-image: url('../../../public/img/delete-svgrepo-com.svg')
             background-repeat: no-repeat
             background-position: center center
-            background-size: 35%
+            background-size: 40%
+        .change
+            background: rgba(107,219,107,1)
+            background-image: url('../../../public/img/edit_icon.svg')
+            background-repeat: no-repeat
+            background-position: center center
+            background-size: 70%
+
+@keyframes ani 
+    0% 
+        opacity: 0
+    100% 
+        opacity: 1
+
         
