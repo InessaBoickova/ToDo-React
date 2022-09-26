@@ -1,11 +1,13 @@
+import './ClearButton.sass'
 
-const ClearButton = (props) =>{
+
+function ClearButton (props){
     return (
-        <div className="checklist_result">
-            <div className="wrapper">
-                <h4 class="checklist_count">You have padding 0 tasktask</h4>
+        <div className="clear">
+            <div className="clear_count">
+                You have padding {props.length} task
             </div>
-            <button className="checklist_clear"> Clear All </button>
+            <button className="clear_btn"> Clear All </button>
         </div>
     )
 }
