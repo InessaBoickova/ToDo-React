@@ -24,6 +24,14 @@ class App extends Component{
         
     }
 
+    deliteAllItem =()=>{
+        this.setState(()=> {
+            return {
+              data: []
+            }
+        })
+    }
+
     addItem = (task) => {
     
       if(!task){
@@ -42,7 +50,6 @@ class App extends Component{
               data: newArr
           }
       });
-      console.log(this.maxId)
     }
   
 
@@ -58,7 +65,7 @@ class App extends Component{
                 <section className="App_wrapper">
                     <TaskAddForm onAdd={this.addItem} />
                     <Task data = {data} delite={this.deleteItem}/>
-                    <ClearButton length = {totalNumTask}/>
+                    <ClearButton length = {totalNumTask} deliteAllItem = {this.deliteAllItem}/>
                 </section> 
 
                 <footer className="App_footer">
