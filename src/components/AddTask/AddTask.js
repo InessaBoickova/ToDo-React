@@ -5,7 +5,7 @@ function AddTask(props){
         <div className="task">
             <div className="task_subheader">{props.task}</div>
             <div>
-                <button  className='task_button change'></button>
+                <button  className='task_button change' onClick={props.edit}></button>
                 <button className="task_button delite" onClick={props.delite}></button>
             </div>
         </div>
