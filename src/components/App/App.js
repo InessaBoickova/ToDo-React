@@ -2,32 +2,34 @@ import { Component } from "react";
 import TaskAddForm from "../TaskAddForm/TaskAddForm";
 import ClearButton from "../ClearButton/ClearButton";
 import Task from "../Task/Task";
-import EditTask from "../EditTask/EditTask";
 import './app.sass'
 
 class App extends Component{
     constructor(props){
         super(props);
         this.state = {
-            show: false,
-            editText:'',
             data : [
-                {task:'Learn React', id: 0},
+                {task:'Learn React', id: 0 , show: false},
             ],
+            editText:'',
         }
         this.maxId = 1;
     }
 
     editTask =(id)=>{
+        this.setState(({data}) => ({
+            data: data.map(item =>{
+                if(item.id === id){
+                    return {...item, show: !item.show};
+                    
+                }
+                return item;
+            })
+        }))
+        
         this.setState({
             editText: this.state.data[id].task
         });
-
-        this.setState(({show})=> {
-            return {
-              show: !show
-            }
-        })
     }
 
     deleteItem =(id)=>{
@@ -47,7 +49,6 @@ class App extends Component{
     }
 
     addItem = (task) => {
-    
       if(!task){
         alert('Введите корректные данные!')
         return this.addItem;
@@ -55,6 +56,7 @@ class App extends Component{
 
       const newItem = {
           task,
+          show:false,
           id: this.maxId++
       }
   
@@ -78,11 +80,7 @@ class App extends Component{
                   
                 <section className="App_wrapper">
                     <TaskAddForm onAdd={this.addItem} />
-                    <Task data = {data} delite={this.deleteItem} edit={this.editTask} show= {this.state.show}/>
-                    { this.state.show
-                        ? <EditTask text={this.state.editText}/>
-                        : null
-                    }
+                    <Task data = {data} delite={this.deleteItem} edit={this.editTask} editText = {this.state.editText}/>
                     <ClearButton length = {totalNumTask} deliteAllItem = {this.deliteAllItem}/>
                 </section> 
 
