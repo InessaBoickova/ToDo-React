@@ -1,26 +1,42 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import './AddTask.sass'
 
 function AddTask(props){
+    let textInput = useRef()
     let [classLict , setClassList] = useState('task');
+    let [newText, setNewText] = useState(props.task);
+    let [readOnly,SetReadOnly] = useState(true);
+
+    const editText= () => {
+        SetReadOnly(!readOnly);
+        textInput.current.focus();
+    }
 
     const onDone = () =>{
         if(classLict.includes('done')){
             setClassList(classLict.replace('done',''))
         }else{
             setClassList(classLict += ' done')
-            
-        }
-        
+        }  
     }
 
     return (
         <div className={classLict}>
-            <div onClick={onDone} className="task_subheader">{props.task}</div>
-            <div>
-                <button  className='task_button change' onClick={props.edit}></button>
-                <button className="task_button delite" onClick={props.delite}></button>
-            </div>
+            <input ref = {textInput} type="text"
+                readOnly = {readOnly}
+                onClick={onDone} 
+                value = {newText} 
+                onChange = {(e) => setNewText(e.target.value)}/>
+           
+                <div>
+                    <button className='task_button change' 
+                            onClick={editText}>   
+                    </button>
+                    <button className="task_button delite"
+                            onClick={props.delite}>
+                    </button>
+                </div>
+            
         </div>
     )
 }

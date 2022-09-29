@@ -1,6 +1,5 @@
 import './ClearButton.sass'
 
-
 function ClearButton (props){
     return (
         <div className="clear">

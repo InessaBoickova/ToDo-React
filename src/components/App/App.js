@@ -9,27 +9,10 @@ class App extends Component{
         super(props);
         this.state = {
             data : [
-                {task:'Learn React', id: 0 , show: false},
+                {task:'Learn React', id: 0 },
             ],
-            editText:'',
         }
         this.maxId = 1;
-    }
-
-    editTask =(id)=>{
-        this.setState(({data}) => ({
-            data: data.map(item =>{
-                if(item.id === id){
-                    return {...item, show: !item.show};
-                    
-                }
-                return item;
-            })
-        }))
-        
-        this.setState({
-            editText: this.state.data[id].task
-        });
     }
 
     deleteItem =(id)=>{
@@ -56,7 +39,6 @@ class App extends Component{
 
       const newItem = {
           task,
-          show:false,
           id: this.maxId++
       }
   
@@ -68,7 +50,6 @@ class App extends Component{
       });
     }
   
-
     render(){
       const {data} = this.state;
       let totalNumTask = data.length;
@@ -80,8 +61,10 @@ class App extends Component{
                   
                 <section className="App_wrapper">
                     <TaskAddForm onAdd={this.addItem} />
-                    <Task data = {data} delite={this.deleteItem} edit={this.editTask} editText = {this.state.editText}/>
-                    <ClearButton length = {totalNumTask} deliteAllItem = {this.deliteAllItem}/>
+                    <Task data = {data}
+                          delite={this.deleteItem} />
+                    <ClearButton length = {totalNumTask} 
+                                deliteAllItem = {this.deliteAllItem}/>
                 </section> 
 
                 <footer className="App_footer">

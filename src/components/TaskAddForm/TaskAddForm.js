@@ -1,7 +1,7 @@
 import { Component } from "react"
 import './TaskAddForm.sass'
-
 class TaskAddForm extends Component{
+    
     constructor(props){
         super(props)
         this.state = {
