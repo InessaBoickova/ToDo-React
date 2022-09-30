@@ -7,7 +7,7 @@ function Task(props){
         return (
              <AddTask key = {id}
                      task = {task}
-                     delite ={() => props.delite(id)}/>
+                     delete ={() => props.delete(id)}/>
         )
     })
     

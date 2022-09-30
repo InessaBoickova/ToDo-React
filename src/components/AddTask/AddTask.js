@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import './AddTask.sass'
 
-function AddTask(props){
+const AddTask =(props) =>{
     let textInput = useRef()
     let [classLict , setClassList] = useState('task');
     let [newText, setNewText] = useState(props.task);
@@ -32,8 +32,8 @@ function AddTask(props){
                     <button className='task_button change' 
                             onClick={editText}>   
                     </button>
-                    <button className="task_button delite"
-                            onClick={props.delite}>
+                    <button className="task_button delete"
+                            onClick={props.delete}>
                     </button>
                 </div>
             

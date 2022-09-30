@@ -23,7 +23,7 @@ class App extends Component{
         })
     }
 
-    deliteAllItem =()=>{
+    deleteAllItem =()=>{
         this.setState(()=> {
             return {
               data: []
@@ -62,9 +62,9 @@ class App extends Component{
                 <section className="App_wrapper">
                     <TaskAddForm onAdd={this.addItem} />
                     <Task data = {data}
-                          delite={this.deleteItem} />
+                          delete={this.deleteItem} />
                     <ClearButton length = {totalNumTask} 
-                                deliteAllItem = {this.deliteAllItem}/>
+                                deleteAllItem = {this.deleteAllItem}/>
                 </section> 
 
                 <footer className="App_footer">
