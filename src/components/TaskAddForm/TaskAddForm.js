@@ -1,36 +1,31 @@
-import { Component } from "react"
+import { useState } from "react"
 import './TaskAddForm.sass'
-class TaskAddForm extends Component{
+
+
+const TaskAddForm = (props)=> {
+    let {onAdd} = props;
+    let [task,setTask] = useState('');
     
-    constructor(props){
-        super(props)
-        this.state = {
-            task : ''
-        }
-    }
-
-    onSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
-        this.props.onAdd(this.state.task);
-        this.setState({
-            task: '',
-        })
+        onAdd(task);
+        setTask('')
     }
 
-    onValueChange= (e)=>{
-        this.setState({
-           task : e.target.value
-        })
+    const onValueChange= (e)=>{
+        setTask(e.target.value)
     }
 
-    render(){
-        return(
-            <form className="form" onSubmit = {this.onSubmit}>
-                <input onChange={(e)=>{this.onValueChange(e)}}  type="text" placeholder="Add your new todo" name="name" value={this.state.task} className="form_input"/>
-                <button className="form_btn" type="submit" ></button>
-            </form>      
-        )
-    }
+    return(
+        <form className="form" onSubmit = {onSubmit}>
+            <input onChange={(e)=>{onValueChange(e)}} 
+                    type="text" placeholder="Add your new todo"
+                    name="name" value={task} 
+                    className="form_input"/>
+            <button className="form_btn" type="submit"></button>
+        </form>      
+    )
+  
 }
 
 export default TaskAddForm;

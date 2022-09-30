@@ -62,7 +62,7 @@ class App extends Component{
                 <section className="App_wrapper">
                     <TaskAddForm onAdd={this.addItem} />
                     <Task data = {data}
-                          delete={this.deleteItem} />
+                          deleteItem ={this.deleteItem} />
                     <ClearButton length = {totalNumTask} 
                                 deleteAllItem = {this.deleteAllItem}/>
                 </section> 

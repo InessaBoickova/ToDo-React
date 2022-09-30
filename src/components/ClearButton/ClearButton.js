@@ -1,12 +1,13 @@
 import './ClearButton.sass'
 
-function ClearButton (props){
+const ClearButton = (props) =>{
+    let {length,deleteAllItem} = props;
     return (
         <div className="clear">
             <div className="clear_count">
-                You have padding {props.length} task
+                You have padding {length} task
             </div>
-            <button className="clear_btn" onClick={props.deleteAllItem}> Clear All </button>
+            <button className="clear_btn" onClick={deleteAllItem}>Clear All </button>
         </div>
     )
 }
